@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Julian Casilimas Beltran | Junior Programmer &amp; Backend Developer</title>
+  <meta name="description" content="Recent Computer Programmer graduate from Lambton College specializing in Python, TypeScript, Node.js, Java, and SQL backend development.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar-container">
+      <a href="#hero" class="nav-brand" aria-label="Julian Casilimas Beltran Portfolio">
+        <div class="brand-symbol">&lt;/&gt;</div>
+        <span>Julian Casilimas Beltran</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#terminal" class="nav-link">Terminal</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
+          <svg id="theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <a href="#contact" class="btn btn-primary btn-sm">Get in Touch</a>
+
+        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Open Navigation Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <a href="#about" class="nav-link mobile-link">About &amp; Summary</a>
+      <a href="#skills" class="nav-link mobile-link">Technical Skills</a>
+      <a href="#projects" class="nav-link mobile-link">Featured Projects</a>
+      <a href="#experience" class="nav-link mobile-link">Experience &amp; Education</a>
+      <a href="#terminal" class="nav-link mobile-link">Interactive Terminal</a>
+      <a href="#contact" class="nav-link mobile-link">Contact</a>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO SECTION WITH CANVAS CONSTELLATION
+       ========================================================================== -->
+  <section class="hero-section" id="hero">
+    <canvas id="hero-canvas"></canvas>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span>Available for Junior Programmer &amp; Backend Developer Roles in Toronto &amp; Remote</span>
+        </div>
+
+        <h1 class="hero-title">
+          Building structured backend logic, <span class="gradient-text">APIs &amp; software systems.</span>
+        </h1>
+
+        <div class="hero-subtitle">
+          <span>&gt;&nbsp;</span>
+          <span id="typewriter-text"></span>
+          <span class="typewriter-cursor"></span>
+        </div>
+
+        <p class="hero-bio">
+          Recent Computer Programmer graduate from Lambton College with hands-on experience in Python, Java, JavaScript, TypeScript, Node.js, and SQL. Dedicated to clean programming logic, database structure, methodical debugging, and continuous learning through projects like the Smart Agriculture Automation Platform and 100 Days of Code.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#projects" class="btn btn-primary">
+            Explore Projects
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="#terminal" class="btn btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+            Interactive Terminal
+          </a>
+          <button class="btn btn-secondary" onclick="triggerResumeDownload()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Resume (PDF)
+          </button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">2025</span>
+            <span class="stat-label">Lambton College Graduate</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">100+</span>
+            <span class="stat-label">Days of Code Practice</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">60+</span>
+            <span class="stat-label">Daily Tech Inquiries Solved</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Commitment to Growth</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ABOUT & ENGINEERING PHILOSOPHY
+       ========================================================================== -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Core Tenets</span>
+        <h2 class="section-title">Development Mindset</h2>
+        <p class="section-subtitle">
+          Analytical problem solver committed to structured logic, object-oriented design, and practical backend software.
+        </p>
+      </div>
+
+      <div class="philosophy-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+          </div>
+          <h3 class="pillar-title">Backend Logic &amp; APIs</h3>
+          <p class="pillar-desc">
+            Translating complex business rules into reliable, well-typed backend routines in TypeScript, Node.js, and Python. Focused on modular functions, clean interfaces, and data integrity.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <h3 class="pillar-title">Methodical Debugging &amp; Testing</h3>
+          <p class="pillar-desc">
+            Breaking down requirements into smaller, manageable development tasks. Rigorously testing logic, isolating edge cases, and refactoring code to improve maintainability and readability.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          </div>
+          <h3 class="pillar-title">Technical Communication</h3>
+          <p class="pillar-desc">
+            Bilingual problem solver (English &amp; Spanish) with real-world enterprise support background (Best Buy &amp; FedEx campaigns). Experienced communicating technical concepts clearly and collaborating effectively.
+          </p>
+        </div>
+      </div>
+
+      <!-- Code Window -->
+      <div class="code-window">
+        <div class="code-window-header">
+          <div class="window-dots">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <span class="window-filename">julian_developer_profile.ts</span>
+          <span style="font-size:0.75rem; color:#64748b;">TypeScript</span>
+        </div>
+        <div class="code-window-body">
+<pre><code><span class="syn-keyword">interface</span> <span class="syn-type">DeveloperProfile</span> {
+  <span class="syn-func">name</span>: <span class="syn-type">string</span>;
+  <span class="syn-func">title</span>: <span class="syn-type">string</span>;
+  <span class="syn-func">location</span>: <span class="syn-type">string</span>;
+  <span class="syn-func">education</span>: <span class="syn-type">string</span>;
+  <span class="syn-func">languages</span>: <span class="syn-type">string[]</span>;
+  <span class="syn-func">strengths</span>: <span class="syn-type">string[]</span>;
+}
+
+<span class="syn-keyword">export const</span> <span class="syn-func">julianCasilimas</span>: <span class="syn-type">DeveloperProfile</span> = {
+  name: <span class="syn-string">"Julian Casilimas Beltran"</span>,
+  title: <span class="syn-string">"Junior Programmer | Software Developer | Backend Development"</span>,
+  location: <span class="syn-string">"Toronto, ON, Canada"</span>,
+  education: <span class="syn-string">"Computer Programmer Diploma - Lambton College (2023 - 2025)"</span>,
+  languages: [<span class="syn-string">"Python"</span>, <span class="syn-string">"TypeScript"</span>, <span class="syn-string">"JavaScript"</span>, <span class="syn-string">"Node.js"</span>, <span class="syn-string">"Java"</span>, <span class="syn-string">"SQL"</span>],
+  strengths: [
+    <span class="syn-string">"Backend logic & API development"</span>,
+    <span class="syn-string">"Object-Oriented Programming & refactoring"</span>,
+    <span class="syn-string">"Analytical troubleshooting & technical communication"</span>
+  ]
+};</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TECHNICAL SKILLS & MATRIX
+       ========================================================================== -->
+  <section id="skills" style="background: var(--bg-surface-elevated); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Capabilities</span>
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-subtitle">
+          Core programming languages, backend frameworks, databases, and development practices.
+        </p>
+      </div>
+
+      <div class="skills-control-bar">
+        <div class="skill-tabs">
+          <button class="skill-tab-btn active" data-category="all">All Skills</button>
+          <button class="skill-tab-btn" data-category="backend">Backend &amp; Logic</button>
+          <button class="skill-tab-btn" data-category="languages">Languages</button>
+          <button class="skill-tab-btn" data-category="data">Data &amp; Databases</button>
+          <button class="skill-tab-btn" data-category="tools">Tools &amp; Practices</button>
+        </div>
+
+        <div class="search-box">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="skill-search" class="search-input" placeholder="Filter skills (e.g. Python, Node.js, SQL)...">
+        </div>
+      </div>
+
+      <div class="skills-grid" id="skills-grid">
+        <!-- Skill 1 -->
+        <div class="skill-card" data-category="backend" data-name="node.js typescript backend apis">
+          <div class="skill-card-top">
+            <span class="skill-name">Node.js &amp; TypeScript</span>
+            <span class="skill-level-tag">Backend Focus</span>
+          </div>
+          <p class="skill-desc">Server-side application logic, NPM package architecture, automated processes, and API design.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 88%;"></div></div>
+        </div>
+
+        <!-- Skill 2 -->
+        <div class="skill-card" data-category="languages" data-name="python programming logic algorithms">
+          <div class="skill-card-top">
+            <span class="skill-name">Python</span>
+            <span class="skill-level-tag">100 Days of Code</span>
+          </div>
+          <p class="skill-desc">Self-directed backend modules, algorithmic problem-solving, data manipulation, and structured scripting.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 85%;"></div></div>
+        </div>
+
+        <!-- Skill 3 -->
+        <div class="skill-card" data-category="languages" data-name="java oop object oriented">
+          <div class="skill-card-top">
+            <span class="skill-name">Java</span>
+            <span class="skill-level-tag">OOP Foundation</span>
+          </div>
+          <p class="skill-desc">Class hierarchies, polymorphism, inheritance, exception handling, and enterprise programming fundamentals.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 80%;"></div></div>
+        </div>
+
+        <!-- Skill 4 -->
+        <div class="skill-card" data-category="languages" data-name="javascript typescript modern">
+          <div class="skill-card-top">
+            <span class="skill-name">JavaScript &amp; TypeScript</span>
+            <span class="skill-level-tag">Type Safety</span>
+          </div>
+          <p class="skill-desc">Asynchronous programming, promises, ES6+ features, static typing, and modular code architecture.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 86%;"></div></div>
+        </div>
+
+        <!-- Skill 5 -->
+        <div class="skill-card" data-category="data" data-name="sql relational database queries">
+          <div class="skill-card-top">
+            <span class="skill-name">SQL &amp; Relational Databases</span>
+            <span class="skill-level-tag">Database Concepts</span>
+          </div>
+          <p class="skill-desc">Schema modeling, relational table design, CRUD queries, joins, and data normalization.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 82%;"></div></div>
+        </div>
+
+        <!-- Skill 6 -->
+        <div class="skill-card" data-category="tools" data-name="git github version control">
+          <div class="skill-card-top">
+            <span class="skill-name">Git &amp; GitHub</span>
+            <span class="skill-level-tag">Version Control</span>
+          </div>
+          <p class="skill-desc">Branching workflows, commits, pull requests, repository management, and code documentation.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 85%;"></div></div>
+        </div>
+
+        <!-- Skill 7 -->
+        <div class="skill-card" data-category="tools" data-name="npm packages dependencies">
+          <div class="skill-card-top">
+            <span class="skill-name">NPM &amp; Package Authoring</span>
+            <span class="skill-level-tag">Package Management</span>
+          </div>
+          <p class="skill-desc">Dependency management, semantic versioning, and publishing reusable packages to the NPM registry.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 84%;"></div></div>
+        </div>
+
+        <!-- Skill 8 -->
+        <div class="skill-card" data-category="tools" data-name="debugging testing unit tests">
+          <div class="skill-card-top">
+            <span class="skill-name">Debugging &amp; Testing</span>
+            <span class="skill-level-tag">Quality Assurance</span>
+          </div>
+          <p class="skill-desc">Step-by-step logic tracing, error isolation, unit test development, and systematic refactoring.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 82%;"></div></div>
+        </div>
+
+        <!-- Skill 9 -->
+        <div class="skill-card" data-category="backend" data-name="html css web frontend">
+          <div class="skill-card-top">
+            <span class="skill-name">HTML5 &amp; CSS3</span>
+            <span class="skill-level-tag">Web Standards</span>
+          </div>
+          <p class="skill-desc">Semantic document markup, responsive design principles, CSS Flexbox, Grid, and styling variables.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 80%;"></div></div>
+        </div>
+
+        <!-- Skill 10 -->
+        <div class="skill-card" data-category="tools" data-name="cloud devops integration">
+          <div class="skill-card-top">
+            <span class="skill-name">Cloud Integration &amp; DevOps</span>
+            <span class="skill-level-tag">Core Concepts</span>
+          </div>
+          <p class="skill-desc">Cloud deployment basics, automated workflows, environment configuration, and service connectivity.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 75%;"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FEATURED PROJECTS & CASE STUDIES
+       ========================================================================== -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Featured Work</span>
+        <h2 class="section-title">Technical Projects &amp; Initiatives</h2>
+        <p class="section-subtitle">
+          Practical software applications demonstrating backend architecture, modular design, and problem-solving skills.
+        </p>
+      </div>
+
+      <!-- Project Filters -->
+      <div class="project-filter-bar">
+        <button class="project-filter-btn active" data-filter="all">All Projects</button>
+        <button class="project-filter-btn" data-filter="backend">Backend &amp; Node.js</button>
+        <button class="project-filter-btn" data-filter="python">Python &amp; Logic</button>
+        <button class="project-filter-btn" data-filter="support">Technical Operations</button>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="projects-grid">
+
+        <!-- Project 1: Smart Agriculture -->
+        <div class="project-card" data-project-type="backend" data-project-id="smartagri">
+          <div class="project-preview">
+            <div class="project-preview-mockup">
+              <div class="mockup-header">
+                <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+                <span style="color:#64748b; font-size:9px; margin-left:4px;">npm: @julianlambton/smart-agriculture</span>
+              </div>
+              <div class="mockup-content">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="color:#10b981;">● SENSOR HUB: ONLINE</span>
+                  <span style="color:#06b6d4;">NODE.js / TS</span>
+                </div>
+                <div class="mock-metric-row">
+                  <div class="mock-metric-pill"><span>Moisture: 32% (Low)</span></div>
+                  <div class="mock-metric-pill"><span>Irrigation: ON</span></div>
+                </div>
+                <div style="color:#818cf8; font-size:10px; margin-top:4px;">
+                  $ npm install @julianlambton/smart-agriculture
+                </div>
+                <div style="color:#10b981; font-size:10px;">
+                  ✓ Drone flight path &amp; disease scanning initialized
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-header-top">
+              <span class="project-category">Academic Project &amp; NPM Package</span>
+            </div>
+            <h3 class="project-title">Smart Agriculture Automation Platform</h3>
+            <p class="project-desc">
+              Developed backend functionality using TypeScript and Node.js for an academic smart agriculture platform. Built programming logic for environmental monitoring, automated irrigation, drone coordination, automated disease-detection, and structured the project as a reusable NPM package.
+            </p>
+            <div class="project-tags">
+              <span class="tag-badge">TypeScript</span>
+              <span class="tag-badge">Node.js</span>
+              <span class="tag-badge">NPM Package</span>
+              <span class="tag-badge">OOP</span>
+              <span class="tag-badge">Data Processing</span>
+              <span class="tag-badge">Git</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-metrics-chip">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                Published on NPM
+              </span>
+              <button class="btn btn-secondary btn-sm" onclick="openCaseStudy('smartagri')">View Details</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: 100 Days of Code -->
+        <div class="project-card" data-project-type="python" data-project-id="py100days">
+          <div class="project-preview">
+            <div class="project-preview-mockup">
+              <div class="mockup-header">
+                <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+                <span style="color:#64748b; font-size:9px; margin-left:4px;">python3 backend_challenge.py</span>
+              </div>
+              <div class="mockup-content">
+                <div style="color:#f59e0b;">&gt; Running test suite: algorithms &amp; OOP</div>
+                <div style="color:#10b981;">✓ 100 Days of Code milestone active</div>
+                <div style="color:#06b6d4;">✓ Structured data validation completed</div>
+                <div style="background:rgba(0,0,0,0.3); padding:4px; border-radius:4px; font-size:9px; color:#94a3b8;">
+                  [PASSED] 24 unit tests executed in 0.14s
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-header-top">
+              <span class="project-category">Self-Directed Learning &amp; Algorithms</span>
+            </div>
+            <h3 class="project-title">Python Programming &amp; Backend Logic</h3>
+            <p class="project-desc">
+              Comprehensive self-directed development series building functional software modules in Python. Covers object-oriented programming principles, data structure manipulation, testing, error isolation, code refactoring, and structured problem-solving.
+            </p>
+            <div class="project-tags">
+              <span class="tag-badge">Python 3</span>
+              <span class="tag-badge">OOP</span>
+              <span class="tag-badge">Algorithms</span>
+              <span class="tag-badge">Testing</span>
+              <span class="tag-badge">Debugging</span>
+              <span class="tag-badge">Problem-Solving</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-metrics-chip">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                100 Days of Code
+              </span>
+              <button class="btn btn-secondary btn-sm" onclick="openCaseStudy('py100days')">View Details</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Technical Support -->
+        <div class="project-card" data-project-type="support" data-project-id="techsupport">
+          <div class="project-preview">
+            <div class="project-preview-mockup">
+              <div class="mockup-header">
+                <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+                <span style="color:#64748b; font-size:9px; margin-left:4px;">sitel-crm: enterprise support</span>
+              </div>
+              <div class="mockup-content">
+                <div style="color:#06b6d4;">CAMPAIGNS: Best Buy USA &bull; FedEx Ground</div>
+                <div style="color:#10b981;">Daily Volume: ~60 inquiries resolved</div>
+                <div style="color:#94a3b8; font-size:9px;">Bilingual troubleshooting &bull; English &amp; Spanish</div>
+              </div>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-header-top">
+              <span class="project-category">Technical Operations &amp; Communication</span>
+            </div>
+            <h3 class="project-title">Enterprise Bilingual Support &amp; Troubleshooting</h3>
+            <p class="project-desc">
+              Delivered bilingual customer and technical support for Best Buy USA and FedEx Ground USA campaigns. Resolved approximately 60 inquiries per day, translating technical information for users and troubleshooting multi-tier logistics and software issues.
+            </p>
+            <div class="project-tags">
+              <span class="tag-badge">Technical Support</span>
+              <span class="tag-badge">Troubleshooting</span>
+              <span class="tag-badge">Bilingual (EN/ES)</span>
+              <span class="tag-badge">Client Communication</span>
+              <span class="tag-badge">Problem-Solving</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-metrics-chip">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                60+ Inquiries / Day
+              </span>
+              <button class="btn btn-secondary btn-sm" onclick="openCaseStudy('techsupport')">View Details</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CASE STUDY DETAIL MODAL DIALOG
+       ========================================================================== -->
+  <div class="modal-backdrop" id="case-study-modal" onclick="closeModalOnBackdrop(event)">
+    <div class="modal-dialog" role="dialog" aria-modal="true">
+      <div class="modal-header">
+        <div>
+          <span id="modal-category" class="project-category">Case Study</span>
+          <h2 id="modal-title" class="section-title" style="font-size:1.75rem; margin-bottom:0;">Project Title</h2>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal()" aria-label="Close Case Study">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-metric-grid" id="modal-metrics">
+          <!-- Dynamically populated metrics -->
+        </div>
+
+        <div class="modal-tabs">
+          <button class="modal-tab-btn active" onclick="switchModalTab('overview')">Overview</button>
+          <button class="modal-tab-btn" onclick="switchModalTab('architecture')">Architecture &amp; Flow</button>
+          <button class="modal-tab-btn" onclick="switchModalTab('code')">Code / Logic Sample</button>
+        </div>
+
+        <div id="tab-overview" class="modal-tab-content active">
+          <p id="modal-overview-text" style="color:var(--text-muted); line-height:1.7; margin-bottom:1.5rem;"></p>
+          <h4 style="margin-bottom:0.75rem; font-size:1.1rem;">Key Responsibilities &amp; Delivery</h4>
+          <ul id="modal-highlights-list" style="padding-left:1.25rem; color:var(--text-muted); line-height:1.7;">
+          </ul>
+        </div>
+
+        <div id="tab-architecture" class="modal-tab-content">
+          <p id="modal-arch-text" style="color:var(--text-muted); line-height:1.7; margin-bottom:1.5rem;"></p>
+          <div style="background:var(--bg-surface-elevated); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:1.25rem; font-family:var(--font-mono); font-size:0.85rem;" id="modal-arch-diagram">
+          </div>
+        </div>
+
+        <div id="tab-code" class="modal-tab-content">
+          <div class="code-window">
+            <div class="code-window-header">
+              <span id="modal-code-filename" class="window-filename">snippet.ts</span>
+            </div>
+            <div class="code-window-body" id="modal-code-body">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       EDUCATION & WORK EXPERIENCE
+       ========================================================================== -->
+  <section id="experience" style="background: var(--bg-surface-elevated); border-top:1px solid var(--border-subtle); border-bottom:1px solid var(--border-subtle);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Background</span>
+        <h2 class="section-title">Education &amp; Experience</h2>
+        <p class="section-subtitle">
+          Academic credentials and professional experience demonstrating reliability and strong work ethic.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <!-- Education -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">Computer Programmer Diploma</h3>
+                <span class="timeline-company">Lambton College &bull; Toronto, ON</span>
+              </div>
+              <span class="timeline-period">May 2023 &mdash; Aug 2025</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Comprehensive academic coursework in Python, Java, JavaScript, TypeScript, Node.js, and SQL.</li>
+              <li>Hands-on projects focusing on object-oriented programming, data structures, relational databases, and backend APIs.</li>
+              <li>Engineered the Smart Agriculture Automation Platform as an academic milestone published to the NPM registry.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Part-time Work -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">Facility Maintenance &bull; Part-Time</h3>
+                <span class="timeline-company">Toronto, ON</span>
+              </div>
+              <span class="timeline-period">May 2024 &mdash; Present</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Demonstrated strong time management and reliability while simultaneously completing programming studies and self-directed coding.</li>
+              <li>Maintained strict attention to safety, organization, and consistent operational standards.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sitel Support -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">Bilingual Customer &amp; Technical Support Representative</h3>
+                <span class="timeline-company">Sitel S.A. &bull; Colombia (Best Buy USA &amp; FedEx Ground)</span>
+              </div>
+              <span class="timeline-period">Sep 2022 &mdash; May 2023</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Provided technical and order troubleshooting for approximately 60 customer inquiries per day.</li>
+              <li>Articulated technical and logistics information clearly to users with varying levels of technical knowledge.</li>
+              <li>Demonstrated adaptability, clear communication, and high attention to detail in a fast-paced environment.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       INTERACTIVE "DEV MODE" TERMINAL
+       ========================================================================== -->
+  <section id="terminal">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Playground</span>
+        <h2 class="section-title">Interactive Dev Console</h2>
+        <p class="section-subtitle">
+          Recruiters and hiring managers: run commands below to explore Julian's background, technical skills, or trigger quick interview actions.
+        </p>
+      </div>
+
+      <div class="terminal-container">
+        <div class="terminal-header">
+          <div class="window-dots">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <span style="color:#94a3b8; font-size:0.8rem; font-family:var(--font-mono);">julian@toronto-dev: ~/portfolio (zsh)</span>
+          <span style="font-size:0.75rem; color:#10b981;">● Available for Hire</span>
+        </div>
+
+        <div class="terminal-actions-quick">
+          <span style="color:#64748b; font-size:0.75rem; align-self:center;">Quick Run:</span>
+          <button class="term-chip" onclick="executeQuickCmd('help')">help</button>
+          <button class="term-chip" onclick="executeQuickCmd('skills')">skills</button>
+          <button class="term-chip" onclick="executeQuickCmd('projects')">projects</button>
+          <button class="term-chip" onclick="executeQuickCmd('education')">education</button>
+          <button class="term-chip" onclick="executeQuickCmd('cat bio.txt')">cat bio.txt</button>
+          <button class="term-chip" onclick="executeQuickCmd('sudo hire')">sudo hire</button>
+          <button class="term-chip" onclick="executeQuickCmd('clear')">clear</button>
+        </div>
+
+        <div class="terminal-screen" id="terminal-screen">
+          <div class="term-line">
+            <span style="color:#06b6d4;">Welcome to Julian Casilimas Beltran's interactive developer terminal!</span><br>
+            <span style="color:#64748b;">Type '<span style="color:#818cf8;">help</span>' to explore available commands, or click any quick-run chip above.</span>
+          </div>
+        </div>
+
+        <div style="padding:0.75rem 1.25rem; background:#0e1320; border-top:1px solid rgba(255,255,255,0.06);">
+          <form id="term-form" onsubmit="handleTerminalSubmit(event)">
+            <div class="term-input-row">
+              <span class="term-prompt">julian@portfolio:~$</span>
+              <input type="text" id="term-input" class="term-input" autocomplete="off" spellcheck="false" placeholder="Type a command...">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CONTACT SECTION
+       ========================================================================== -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Let's Connect</span>
+        <h2 class="section-title">Get in Touch with Julian</h2>
+        <p class="section-subtitle">
+          Actively looking for Junior Programmer, Software Developer, and Backend opportunities in Toronto, ON and Remote across Canada.
+        </p>
+      </div>
+
+      <div class="contact-layout">
+        <!-- Contact Information -->
+        <div class="contact-info-card">
+          <h3 class="contact-card-title">Direct Contact</h3>
+          <p class="contact-card-desc">
+            Feel free to call, email, or message me directly. I respond quickly and am eager to discuss software development opportunities.
+          </p>
+
+          <div class="contact-methods">
+            <div class="contact-method-item">
+              <div class="contact-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div>
+                <div style="font-size:0.8rem; color:var(--text-muted);">Email Address</div>
+                <a href="mailto:julianbeca1230@gmail.com" style="font-weight:600; color:var(--text-main);">julianbeca1230@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact-method-item">
+              <div class="contact-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div>
+                <div style="font-size:0.8rem; color:var(--text-muted);">Phone Number</div>
+                <a href="tel:4374456610" style="font-weight:600; color:var(--text-main);">437-445-6610</a>
+              </div>
+            </div>
+
+            <div class="contact-method-item">
+              <div class="contact-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div>
+                <div style="font-size:0.8rem; color:var(--text-muted);">Location</div>
+                <span style="font-weight:600;">Toronto, ON, Canada &bull; Open to On-site, Hybrid &amp; Remote</span>
+              </div>
+            </div>
+
+            <div class="contact-method-item">
+              <div class="contact-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div>
+                <div style="font-size:0.8rem; color:var(--text-muted);">Availability</div>
+                <span style="font-weight:600; color:var(--accent-emerald);">Immediate / Open for Interviews</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size:0.85rem; font-weight:600; color:var(--text-muted); margin-bottom:1rem;">FIND ME ONLINE</div>
+            <div class="social-links">
+              <a href="https://github.com" target="_blank" rel="noopener" class="social-btn" title="GitHub">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              </a>
+              <a href="mailto:julianbeca1230@gmail.com" class="social-btn" title="Direct Email">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Validated Contact Form -->
+        <div class="contact-form-card">
+          <form id="contact-form" onsubmit="handleContactSubmit(event)">
+            <div class="form-group">
+              <label for="form-name" class="form-label">Your Name *</label>
+              <input type="text" id="form-name" class="form-input" placeholder="e.g. Hiring Manager / Tech Recruiter" required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-email" class="form-label">Your Email *</label>
+              <input type="email" id="form-email" class="form-input" placeholder="e.g. recruiter@company.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-subject" class="form-label">Subject / Role Type</label>
+              <select id="form-subject" class="form-select">
+                <option value="Junior Programmer / Software Developer Role">Junior Programmer / Software Developer Role</option>
+                <option value="Backend Developer Opportunity">Backend Developer Opportunity</option>
+                <option value="Technical Interview Request">Technical Interview Request</option>
+                <option value="General Engineering Inquiry">General Engineering Inquiry</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="form-message" class="form-label">Message *</label>
+              <textarea id="form-message" class="form-textarea" placeholder="Hello Julian, we would love to speak with you regarding a software developer position..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              Send Message to Julian
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer>
+    <div class="container footer-content">
+      <div>
+        <div style="font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">Julian Casilimas Beltran &bull; Junior Programmer &amp; Backend Developer</div>
+        <p>Toronto, ON, Canada &bull; Lambton College Computer Programmer Graduate (2025)</p>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:1.5rem;">
+        <span style="font-size:0.8rem; font-family:var(--font-mono); color:var(--accent-emerald);">● Open for Opportunities</span>
+        <a href="#hero" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+          Back to Top
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Element -->
+  <div id="toast" class="toast" role="status">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+    <span id="toast-message">Message sent successfully!</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

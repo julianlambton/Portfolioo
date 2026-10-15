@@ -1,0 +1,2781 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Julian Casilimas Beltran | Junior Programmer &amp; Backend Developer</title>
+  <meta name="description" content="Recent Computer Programmer graduate from Lambton College specializing in Python, TypeScript, Node.js, Java, and SQL backend development.">
+  <style>
+/* ==========================================================================
+       CSS VARIABLES & THEME SYSTEM
+       ========================================================================== */
+    :root {
+      /* Dark Theme (Default) */
+      --bg-base: #0a0d14;
+      --bg-surface: #111726;
+      --bg-surface-elevated: #182238;
+      --bg-surface-glass: rgba(17, 23, 38, 0.75);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(99, 102, 241, 0.5);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent-primary: #6366f1;
+      --accent-primary-hover: #4f46e5;
+      --accent-cyan: #06b6d4;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --accent-glow: rgba(99, 102, 241, 0.25);
+      --accent-gradient: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+      --surface-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+      --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --radius-full: 9999px;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --transition-fast: 0.15s ease;
+      --transition-normal: 0.25s ease;
+      --header-height: 72px;
+    }
+
+    [data-theme="light"] {
+      --bg-base: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-elevated: #f1f5f9;
+      --bg-surface-glass: rgba(255, 255, 255, 0.85);
+      --border-subtle: rgba(0, 0, 0, 0.08);
+      --border-focus: rgba(99, 102, 241, 0.4);
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-dim: #94a3b8;
+      --accent-glow: rgba(99, 102, 241, 0.12);
+      --surface-gradient: linear-gradient(180deg, rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0) 100%);
+      --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ==========================================================================
+       RESET & BASE TYPOGRAPHY
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color var(--transition-normal), color var(--transition-normal);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    button, input, textarea, select {
+      font-family: inherit;
+      color: inherit;
+    }
+
+    /* ==========================================================================
+       LAYOUT UTILITIES
+       ========================================================================== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    section {
+      padding: 6rem 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 3.5rem auto;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.825rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.125rem;
+      line-height: 1.6;
+    }
+
+    .gradient-text {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    /* ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-height);
+      background: var(--bg-surface-glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 1000;
+      transition: background var(--transition-normal), border var(--transition-normal);
+    }
+
+    .navbar-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-symbol {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 1rem;
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--text-main);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent-primary);
+      border-radius: 2px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .theme-toggle-btn {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-fast);
+    }
+
+    .theme-toggle-btn:hover {
+      color: var(--text-main);
+      border-color: var(--border-focus);
+      transform: translateY(-1px);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.75rem 1.4rem;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      border: none;
+      transition: all var(--transition-fast);
+    }
+
+    .btn-primary {
+      background: var(--accent-gradient);
+      color: #ffffff;
+      box-shadow: 0 4px 14px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-surface);
+      border-color: var(--text-dim);
+      transform: translateY(-2px);
+    }
+
+    .btn-sm {
+      padding: 0.45rem 0.9rem;
+      font-size: 0.85rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      right: 0;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1.5rem;
+      flex-direction: column;
+      gap: 1rem;
+      box-shadow: var(--card-shadow);
+      z-index: 999;
+    }
+
+    .mobile-drawer.open {
+      display: flex;
+    }
+
+    /* ==========================================================================
+       HERO SECTION WITH CANVAS NETWORK
+       ========================================================================== */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-top: calc(var(--header-height) + 2rem);
+      padding-bottom: 4rem;
+      overflow: hidden;
+    }
+
+    #hero-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      opacity: 0.65;
+      pointer-events: auto;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 820px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      color: var(--accent-emerald);
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1.75rem;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-emerald);
+      animation: pulse-dot 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.6; }
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      margin-bottom: 1.5rem;
+      min-height: 2.25rem;
+      display: flex;
+      align-items: center;
+      font-family: var(--font-mono);
+    }
+
+    .typewriter-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1.2em;
+      background: var(--accent-cyan);
+      margin-left: 4px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    .hero-bio {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 680px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+    }
+
+    /* Stats Strip */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.03em;
+      font-family: var(--font-mono);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* ==========================================================================
+       PHILOSOPHY & CODE HIGHLIGHT SECTION
+       ========================================================================== */
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .pillar-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      transition: all var(--transition-normal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pillar-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent-gradient);
+      opacity: 0;
+      transition: opacity var(--transition-normal);
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-focus);
+      box-shadow: var(--card-shadow);
+    }
+
+    .pillar-card:hover::before {
+      opacity: 1;
+    }
+
+    .pillar-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      color: var(--accent-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .pillar-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .pillar-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Code Window */
+    .code-window {
+      background: #0f1422;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+    }
+
+    .code-window-header {
+      background: #171f33;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .window-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .window-filename {
+      color: #94a3b8;
+      font-size: 0.8rem;
+    }
+
+    .code-window-body {
+      padding: 1.5rem;
+      line-height: 1.7;
+      color: #e2e8f0;
+      overflow-x: auto;
+    }
+
+    .syn-keyword { color: #f43f5e; font-weight: 600; }
+    .syn-type { color: #06b6d4; }
+    .syn-string { color: #10b981; }
+    .syn-comment { color: #64748b; font-style: italic; }
+    .syn-func { color: #818cf8; }
+
+    /* ==========================================================================
+       SKILLS & TECH STACK MATRIX
+       ========================================================================== */
+    .skills-control-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-md);
+    }
+
+    .skill-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 0.45rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .skill-tab-btn:hover {
+      color: var(--text-main);
+      background: var(--bg-surface-elevated);
+    }
+
+    .skill-tab-btn.active {
+      background: var(--accent-primary);
+      color: #ffffff;
+      border-color: var(--accent-primary);
+    }
+
+    .search-box {
+      position: relative;
+      min-width: 240px;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 0.5rem 1rem 0.5rem 2.25rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      outline: none;
+      transition: border var(--transition-fast);
+    }
+
+    .search-input:focus {
+      border-color: var(--accent-primary);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      pointer-events: none;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .skill-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      transition: all var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-focus);
+      box-shadow: 0 8px 20px -6px var(--accent-glow);
+    }
+
+    .skill-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .skill-level-tag {
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      background: var(--bg-surface-elevated);
+      color: var(--accent-cyan);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .skill-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .skill-meter {
+      height: 6px;
+      background: var(--bg-surface-elevated);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .skill-meter-fill {
+      height: 100%;
+      background: var(--accent-gradient);
+      border-radius: var(--radius-full);
+      transition: width 1s ease-in-out;
+    }
+
+    /* ==========================================================================
+       PROJECTS SHOWCASE SECTION
+       ========================================================================== */
+    .project-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+    }
+
+    .project-filter-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 0.6rem 1.25rem;
+      border-radius: var(--radius-full);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .project-filter-btn:hover {
+      color: var(--text-main);
+      border-color: var(--border-focus);
+    }
+
+    .project-filter-btn.active {
+      background: var(--accent-primary);
+      color: #ffffff;
+      border-color: var(--accent-primary);
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all var(--transition-normal);
+      position: relative;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-focus);
+      box-shadow: var(--card-shadow);
+    }
+
+    .project-preview {
+      height: 220px;
+      background: #111827;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--border-subtle);
+      overflow: hidden;
+    }
+
+    .project-preview-mockup {
+      width: 90%;
+      height: 85%;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .mockup-header {
+      height: 24px;
+      background: rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      gap: 5px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .mockup-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+    }
+
+    .mockup-content {
+      flex: 1;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .mock-metric-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .mock-metric-pill {
+      background: rgba(255,255,255,0.04);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.05);
+      flex: 1;
+    }
+
+    .project-body {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .project-header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-category {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-cyan);
+      font-weight: 700;
+    }
+
+    .project-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      color: var(--text-main);
+    }
+
+    .project-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tag-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      background: var(--bg-surface-elevated);
+      color: var(--text-muted);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .project-metrics-chip {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-emerald);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* ==========================================================================
+       CASE STUDY MODAL
+       ========================================================================== */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity var(--transition-normal);
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-dialog {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 860px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+      position: relative;
+      animation: modalSlideUp 0.3s ease-out;
+    }
+
+    @keyframes modalSlideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-header {
+      padding: 2rem 2rem 1.25rem 2rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      background: var(--bg-surface);
+      z-index: 10;
+    }
+
+    .modal-close-btn {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-fast);
+    }
+
+    .modal-close-btn:hover {
+      color: var(--text-main);
+      border-color: var(--accent-rose);
+      background: rgba(244, 63, 94, 0.1);
+    }
+
+    .modal-body {
+      padding: 2rem;
+    }
+
+    .modal-tabs {
+      display: flex;
+      gap: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.5rem 0.25rem 0.75rem 0.25rem;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .modal-tab-btn.active {
+      color: var(--accent-primary);
+    }
+
+    .modal-tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent-primary);
+    }
+
+    .modal-tab-content {
+      display: none;
+    }
+
+    .modal-tab-content.active {
+      display: block;
+    }
+
+    .modal-metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .modal-metric-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .modal-metric-value {
+      font-size: 1.75rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      color: var(--accent-cyan);
+    }
+
+    .modal-metric-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* ==========================================================================
+       CAREER & EXPERIENCE TIMELINE
+       ========================================================================== */
+    .timeline {
+      position: relative;
+      max-width: 860px;
+      margin: 0 auto;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      bottom: 10px;
+      left: 7px;
+      width: 2px;
+      background: var(--border-subtle);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2rem;
+      top: 6px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--bg-surface);
+      border: 3px solid var(--accent-primary);
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .timeline-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      transition: all var(--transition-normal);
+    }
+
+    .timeline-card:hover {
+      border-color: var(--border-focus);
+      transform: translateX(4px);
+    }
+
+    .timeline-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-role {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .timeline-company {
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    .timeline-period {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      background: var(--bg-surface-elevated);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .timeline-bullets {
+      margin-top: 1rem;
+      padding-left: 1.25rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .timeline-bullets li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* ==========================================================================
+       INTERACTIVE DEV TERMINAL ("DEV MODE")
+       ========================================================================== */
+    .terminal-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #090d16;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.8);
+      font-family: var(--font-mono);
+    }
+
+    .terminal-header {
+      background: #121826;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .terminal-actions-quick {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.75rem 1.25rem;
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .term-chip {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--accent-cyan);
+      font-size: 0.775rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .term-chip:hover {
+      background: rgba(6, 182, 212, 0.2);
+      border-color: var(--accent-cyan);
+    }
+
+    .terminal-screen {
+      padding: 1.5rem;
+      min-height: 280px;
+      max-height: 420px;
+      overflow-y: auto;
+      font-size: 0.875rem;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+
+    .term-line {
+      margin-bottom: 0.75rem;
+      word-break: break-word;
+    }
+
+    .term-prompt {
+      color: var(--accent-emerald);
+      font-weight: 700;
+    }
+
+    .term-cmd {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .term-out {
+      color: #94a3b8;
+      margin-top: 0.25rem;
+    }
+
+    .term-input-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .term-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      outline: none;
+    }
+
+    /* ==========================================================================
+       CONTACT & FOOTER SECTION
+       ========================================================================== */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-info-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+    }
+
+    .contact-card-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .contact-card-desc {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-method-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--text-main);
+    }
+
+    .contact-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .social-btn:hover {
+      color: var(--text-main);
+      border-color: var(--accent-primary);
+      transform: translateY(-2px);
+    }
+
+    /* Contact Form */
+    .contact-form-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--text-main);
+    }
+
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      outline: none;
+      transition: all var(--transition-fast);
+    }
+
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-focus);
+      color: var(--text-main);
+      padding: 1rem 1.5rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--card-shadow);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      z-index: 3000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 3rem 0;
+      background: var(--bg-surface);
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE MEDIA QUERIES
+       ========================================================================== */
+    @media (max-width: 992px) {
+      .hero-title { font-size: 2.75rem; }
+      .philosophy-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .contact-layout { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+      .hero-title { font-size: 2.25rem; }
+      .modal-metric-grid { grid-template-columns: 1fr; }
+      .section-title { font-size: 2rem; }
+    }
+</style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar-container">
+      <a href="#hero" class="nav-brand" aria-label="Julian Casilimas Beltran Portfolio">
+        <div class="brand-symbol">&lt;/&gt;</div>
+        <span>Julian Casilimas Beltran</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#terminal" class="nav-link">Terminal</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
+          <svg id="theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <a href="#contact" class="btn btn-primary btn-sm">Get in Touch</a>
+
+        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Open Navigation Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <a href="#about" class="nav-link mobile-link">About &amp; Summary</a>
+      <a href="#skills" class="nav-link mobile-link">Technical Skills</a>
+      <a href="#projects" class="nav-link mobile-link">Featured Projects</a>
+      <a href="#experience" class="nav-link mobile-link">Experience &amp; Education</a>
+      <a href="#terminal" class="nav-link mobile-link">Interactive Terminal</a>
+      <a href="#contact" class="nav-link mobile-link">Contact</a>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO SECTION WITH CANVAS CONSTELLATION
+       ========================================================================== -->
+  <section class="hero-section" id="hero">
+    <canvas id="hero-canvas"></canvas>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span>Available for Junior Programmer &amp; Backend Developer Roles in Toronto &amp; Remote</span>
+        </div>
+
+        <h1 class="hero-title">
+          Building structured backend logic, <span class="gradient-text">APIs &amp; software systems.</span>
+        </h1>
+
+        <div class="hero-subtitle">
+          <span>&gt;&nbsp;</span>
+          <span id="typewriter-text"></span>
+          <span class="typewriter-cursor"></span>
+        </div>
+
+        <p class="hero-bio">
+          Recent Computer Programmer graduate from Lambton College with hands-on experience in Python, Java, JavaScript, TypeScript, Node.js, and SQL. Dedicated to clean programming logic, database structure, methodical debugging, and continuous learning through projects like the Smart Agriculture Automation Platform and 100 Days of Code.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#projects" class="btn btn-primary">
+            Explore Projects
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="#terminal" class="btn btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+            Interactive Terminal
+          </a>
+          <button class="btn btn-secondary" onclick="triggerResumeDownload()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Resume (PDF)
+          </button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">2025</span>
+            <span class="stat-label">Lambton College Graduate</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">100+</span>
+            <span class="stat-label">Days of Code Practice</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">60+</span>
+            <span class="stat-label">Daily Tech Inquiries Solved</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Commitment to Growth</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ABOUT & ENGINEERING PHILOSOPHY
+       ========================================================================== -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Core Tenets</span>
+        <h2 class="section-title">Development Mindset</h2>
+        <p class="section-subtitle">
+          Analytical problem solver committed to structured logic, object-oriented design, and practical backend software.
+        </p>
+      </div>
+
+      <div class="philosophy-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+          </div>
+          <h3 class="pillar-title">Backend Logic &amp; APIs</h3>
+          <p class="pillar-desc">
+            Translating complex business rules into reliable, well-typed backend routines in TypeScript, Node.js, and Python. Focused on modular functions, clean interfaces, and data integrity.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <h3 class="pillar-title">Methodical Debugging &amp; Testing</h3>
+          <p class="pillar-desc">
+            Breaking down requirements into smaller, manageable development tasks. Rigorously testing logic, isolating edge cases, and refactoring code to improve maintainability and readability.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          </div>
+          <h3 class="pillar-title">Technical Communication</h3>
+          <p class="pillar-desc">
+            Bilingual problem solver (English &amp; Spanish) with real-world enterprise support background (Best Buy &amp; FedEx campaigns). Experienced communicating technical concepts clearly and collaborating effectively.
+          </p>
+        </div>
+      </div>
+
+      <!-- Code Window -->
+      <div class="code-window">
+        <div class="code-window-header">
+          <div class="window-dots">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <span class="window-filename">julian_developer_profile.ts</span>
+          <span style="font-size:0.75rem; color:#64748b;">TypeScript</span>
+        </div>
+        <div class="code-window-body">
+<pre><code><span class="syn-keyword">interface</span> <span class="syn-type">DeveloperProfile</span> {
+  <span class="syn-func">name</span>: <span class="syn-type">string</span>;
+  <span class="syn-func">title</span>: <span class="syn-type">string</span>;
+  <span class="syn-func">location</span>: <span class="syn-type">string</span>;
+  <span class="syn-func">education</span>: <span class="syn-type">string</span>;
+  <span class="syn-func">languages</span>: <span class="syn-type">string[]</span>;
+  <span class="syn-func">strengths</span>: <span class="syn-type">string[]</span>;
+}
+
+<span class="syn-keyword">export const</span> <span class="syn-func">julianCasilimas</span>: <span class="syn-type">DeveloperProfile</span> = {
+  name: <span class="syn-string">"Julian Casilimas Beltran"</span>,
+  title: <span class="syn-string">"Junior Programmer | Software Developer | Backend Development"</span>,
+  location: <span class="syn-string">"Toronto, ON, Canada"</span>,
+  education: <span class="syn-string">"Computer Programmer Diploma - Lambton College (2023 - 2025)"</span>,
+  languages: [<span class="syn-string">"Python"</span>, <span class="syn-string">"TypeScript"</span>, <span class="syn-string">"JavaScript"</span>, <span class="syn-string">"Node.js"</span>, <span class="syn-string">"Java"</span>, <span class="syn-string">"SQL"</span>],
+  strengths: [
+    <span class="syn-string">"Backend logic & API development"</span>,
+    <span class="syn-string">"Object-Oriented Programming & refactoring"</span>,
+    <span class="syn-string">"Analytical troubleshooting & technical communication"</span>
+  ]
+};</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TECHNICAL SKILLS & MATRIX
+       ========================================================================== -->
+  <section id="skills" style="background: var(--bg-surface-elevated); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Capabilities</span>
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-subtitle">
+          Core programming languages, backend frameworks, databases, and development practices.
+        </p>
+      </div>
+
+      <div class="skills-control-bar">
+        <div class="skill-tabs">
+          <button class="skill-tab-btn active" data-category="all">All Skills</button>
+          <button class="skill-tab-btn" data-category="backend">Backend &amp; Logic</button>
+          <button class="skill-tab-btn" data-category="languages">Languages</button>
+          <button class="skill-tab-btn" data-category="data">Data &amp; Databases</button>
+          <button class="skill-tab-btn" data-category="tools">Tools &amp; Practices</button>
+        </div>
+
+        <div class="search-box">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="skill-search" class="search-input" placeholder="Filter skills (e.g. Python, Node.js, SQL)...">
+        </div>
+      </div>
+
+      <div class="skills-grid" id="skills-grid">
+        <!-- Skill 1 -->
+        <div class="skill-card" data-category="backend" data-name="node.js typescript backend apis">
+          <div class="skill-card-top">
+            <span class="skill-name">Node.js &amp; TypeScript</span>
+            <span class="skill-level-tag">Backend Focus</span>
+          </div>
+          <p class="skill-desc">Server-side application logic, NPM package architecture, automated processes, and API design.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 88%;"></div></div>
+        </div>
+
+        <!-- Skill 2 -->
+        <div class="skill-card" data-category="languages" data-name="python programming logic algorithms">
+          <div class="skill-card-top">
+            <span class="skill-name">Python</span>
+            <span class="skill-level-tag">100 Days of Code</span>
+          </div>
+          <p class="skill-desc">Self-directed backend modules, algorithmic problem-solving, data manipulation, and structured scripting.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 85%;"></div></div>
+        </div>
+
+        <!-- Skill 3 -->
+        <div class="skill-card" data-category="languages" data-name="java oop object oriented">
+          <div class="skill-card-top">
+            <span class="skill-name">Java</span>
+            <span class="skill-level-tag">OOP Foundation</span>
+          </div>
+          <p class="skill-desc">Class hierarchies, polymorphism, inheritance, exception handling, and enterprise programming fundamentals.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 80%;"></div></div>
+        </div>
+
+        <!-- Skill 4 -->
+        <div class="skill-card" data-category="languages" data-name="javascript typescript modern">
+          <div class="skill-card-top">
+            <span class="skill-name">JavaScript &amp; TypeScript</span>
+            <span class="skill-level-tag">Type Safety</span>
+          </div>
+          <p class="skill-desc">Asynchronous programming, promises, ES6+ features, static typing, and modular code architecture.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 86%;"></div></div>
+        </div>
+
+        <!-- Skill 5 -->
+        <div class="skill-card" data-category="data" data-name="sql relational database queries">
+          <div class="skill-card-top">
+            <span class="skill-name">SQL &amp; Relational Databases</span>
+            <span class="skill-level-tag">Database Concepts</span>
+          </div>
+          <p class="skill-desc">Schema modeling, relational table design, CRUD queries, joins, and data normalization.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 82%;"></div></div>
+        </div>
+
+        <!-- Skill 6 -->
+        <div class="skill-card" data-category="tools" data-name="git github version control">
+          <div class="skill-card-top">
+            <span class="skill-name">Git &amp; GitHub</span>
+            <span class="skill-level-tag">Version Control</span>
+          </div>
+          <p class="skill-desc">Branching workflows, commits, pull requests, repository management, and code documentation.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 85%;"></div></div>
+        </div>
+
+        <!-- Skill 7 -->
+        <div class="skill-card" data-category="tools" data-name="npm packages dependencies">
+          <div class="skill-card-top">
+            <span class="skill-name">NPM &amp; Package Authoring</span>
+            <span class="skill-level-tag">Package Management</span>
+          </div>
+          <p class="skill-desc">Dependency management, semantic versioning, and publishing reusable packages to the NPM registry.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 84%;"></div></div>
+        </div>
+
+        <!-- Skill 8 -->
+        <div class="skill-card" data-category="tools" data-name="debugging testing unit tests">
+          <div class="skill-card-top">
+            <span class="skill-name">Debugging &amp; Testing</span>
+            <span class="skill-level-tag">Quality Assurance</span>
+          </div>
+          <p class="skill-desc">Step-by-step logic tracing, error isolation, unit test development, and systematic refactoring.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 82%;"></div></div>
+        </div>
+
+        <!-- Skill 9 -->
+        <div class="skill-card" data-category="backend" data-name="html css web frontend">
+          <div class="skill-card-top">
+            <span class="skill-name">HTML5 &amp; CSS3</span>
+            <span class="skill-level-tag">Web Standards</span>
+          </div>
+          <p class="skill-desc">Semantic document markup, responsive design principles, CSS Flexbox, Grid, and styling variables.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 80%;"></div></div>
+        </div>
+
+        <!-- Skill 10 -->
+        <div class="skill-card" data-category="tools" data-name="cloud devops integration">
+          <div class="skill-card-top">
+            <span class="skill-name">Cloud Integration &amp; DevOps</span>
+            <span class="skill-level-tag">Core Concepts</span>
+          </div>
+          <p class="skill-desc">Cloud deployment basics, automated workflows, environment configuration, and service connectivity.</p>
+          <div class="skill-meter"><div class="skill-meter-fill" style="width: 75%;"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FEATURED PROJECTS & CASE STUDIES
+       ========================================================================== -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Featured Work</span>
+        <h2 class="section-title">Technical Projects &amp; Initiatives</h2>
+        <p class="section-subtitle">
+          Practical software applications demonstrating backend architecture, modular design, and problem-solving skills.
+        </p>
+      </div>
+
+      <!-- Project Filters -->
+      <div class="project-filter-bar">
+        <button class="project-filter-btn active" data-filter="all">All Projects</button>
+        <button class="project-filter-btn" data-filter="backend">Backend &amp; Node.js</button>
+        <button class="project-filter-btn" data-filter="python">Python &amp; Logic</button>
+        <button class="project-filter-btn" data-filter="support">Technical Operations</button>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="projects-grid">
+
+        <!-- Project 1: Smart Agriculture -->
+        <div class="project-card" data-project-type="backend" data-project-id="smartagri">
+          <div class="project-preview">
+            <div class="project-preview-mockup">
+              <div class="mockup-header">
+                <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+                <span style="color:#64748b; font-size:9px; margin-left:4px;">npm: @julianlambton/smart-agriculture</span>
+              </div>
+              <div class="mockup-content">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="color:#10b981;">● SENSOR HUB: ONLINE</span>
+                  <span style="color:#06b6d4;">NODE.js / TS</span>
+                </div>
+                <div class="mock-metric-row">
+                  <div class="mock-metric-pill"><span>Moisture: 32% (Low)</span></div>
+                  <div class="mock-metric-pill"><span>Irrigation: ON</span></div>
+                </div>
+                <div style="color:#818cf8; font-size:10px; margin-top:4px;">
+                  $ npm install @julianlambton/smart-agriculture
+                </div>
+                <div style="color:#10b981; font-size:10px;">
+                  ✓ Drone flight path &amp; disease scanning initialized
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-header-top">
+              <span class="project-category">Academic Project &amp; NPM Package</span>
+            </div>
+            <h3 class="project-title">Smart Agriculture Automation Platform</h3>
+            <p class="project-desc">
+              Developed backend functionality using TypeScript and Node.js for an academic smart agriculture platform. Built programming logic for environmental monitoring, automated irrigation, drone coordination, automated disease-detection, and structured the project as a reusable NPM package.
+            </p>
+            <div class="project-tags">
+              <span class="tag-badge">TypeScript</span>
+              <span class="tag-badge">Node.js</span>
+              <span class="tag-badge">NPM Package</span>
+              <span class="tag-badge">OOP</span>
+              <span class="tag-badge">Data Processing</span>
+              <span class="tag-badge">Git</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-metrics-chip">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                Published on NPM
+              </span>
+              <button class="btn btn-secondary btn-sm" onclick="openCaseStudy('smartagri')">View Details</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: 100 Days of Code -->
+        <div class="project-card" data-project-type="python" data-project-id="py100days">
+          <div class="project-preview">
+            <div class="project-preview-mockup">
+              <div class="mockup-header">
+                <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+                <span style="color:#64748b; font-size:9px; margin-left:4px;">python3 backend_challenge.py</span>
+              </div>
+              <div class="mockup-content">
+                <div style="color:#f59e0b;">&gt; Running test suite: algorithms &amp; OOP</div>
+                <div style="color:#10b981;">✓ 100 Days of Code milestone active</div>
+                <div style="color:#06b6d4;">✓ Structured data validation completed</div>
+                <div style="background:rgba(0,0,0,0.3); padding:4px; border-radius:4px; font-size:9px; color:#94a3b8;">
+                  [PASSED] 24 unit tests executed in 0.14s
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-header-top">
+              <span class="project-category">Self-Directed Learning &amp; Algorithms</span>
+            </div>
+            <h3 class="project-title">Python Programming &amp; Backend Logic</h3>
+            <p class="project-desc">
+              Comprehensive self-directed development series building functional software modules in Python. Covers object-oriented programming principles, data structure manipulation, testing, error isolation, code refactoring, and structured problem-solving.
+            </p>
+            <div class="project-tags">
+              <span class="tag-badge">Python 3</span>
+              <span class="tag-badge">OOP</span>
+              <span class="tag-badge">Algorithms</span>
+              <span class="tag-badge">Testing</span>
+              <span class="tag-badge">Debugging</span>
+              <span class="tag-badge">Problem-Solving</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-metrics-chip">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                100 Days of Code
+              </span>
+              <button class="btn btn-secondary btn-sm" onclick="openCaseStudy('py100days')">View Details</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Technical Support -->
+        <div class="project-card" data-project-type="support" data-project-id="techsupport">
+          <div class="project-preview">
+            <div class="project-preview-mockup">
+              <div class="mockup-header">
+                <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+                <span style="color:#64748b; font-size:9px; margin-left:4px;">sitel-crm: enterprise support</span>
+              </div>
+              <div class="mockup-content">
+                <div style="color:#06b6d4;">CAMPAIGNS: Best Buy USA &bull; FedEx Ground</div>
+                <div style="color:#10b981;">Daily Volume: ~60 inquiries resolved</div>
+                <div style="color:#94a3b8; font-size:9px;">Bilingual troubleshooting &bull; English &amp; Spanish</div>
+              </div>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-header-top">
+              <span class="project-category">Technical Operations &amp; Communication</span>
+            </div>
+            <h3 class="project-title">Enterprise Bilingual Support &amp; Troubleshooting</h3>
+            <p class="project-desc">
+              Delivered bilingual customer and technical support for Best Buy USA and FedEx Ground USA campaigns. Resolved approximately 60 inquiries per day, translating technical information for users and troubleshooting multi-tier logistics and software issues.
+            </p>
+            <div class="project-tags">
+              <span class="tag-badge">Technical Support</span>
+              <span class="tag-badge">Troubleshooting</span>
+              <span class="tag-badge">Bilingual (EN/ES)</span>
+              <span class="tag-badge">Client Communication</span>
+              <span class="tag-badge">Problem-Solving</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-metrics-chip">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                60+ Inquiries / Day
+              </span>
+              <button class="btn btn-secondary btn-sm" onclick="openCaseStudy('techsupport')">View Details</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CASE STUDY DETAIL MODAL DIALOG
+       ========================================================================== -->
+  <div class="modal-backdrop" id="case-study-modal" onclick="closeModalOnBackdrop(event)">
+    <div class="modal-dialog" role="dialog" aria-modal="true">
+      <div class="modal-header">
+        <div>
+          <span id="modal-category" class="project-category">Case Study</span>
+          <h2 id="modal-title" class="section-title" style="font-size:1.75rem; margin-bottom:0;">Project Title</h2>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal()" aria-label="Close Case Study">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-metric-grid" id="modal-metrics">
+          <!-- Dynamically populated metrics -->
+        </div>
+
+        <div class="modal-tabs">
+          <button class="modal-tab-btn active" onclick="switchModalTab('overview')">Overview</button>
+          <button class="modal-tab-btn" onclick="switchModalTab('architecture')">Architecture &amp; Flow</button>
+          <button class="modal-tab-btn" onclick="switchModalTab('code')">Code / Logic Sample</button>
+        </div>
+
+        <div id="tab-overview" class="modal-tab-content active">
+          <p id="modal-overview-text" style="color:var(--text-muted); line-height:1.7; margin-bottom:1.5rem;"></p>
+          <h4 style="margin-bottom:0.75rem; font-size:1.1rem;">Key Responsibilities &amp; Delivery</h4>
+          <ul id="modal-highlights-list" style="padding-left:1.25rem; color:var(--text-muted); line-height:1.7;">
+          </ul>
+        </div>
+
+        <div id="tab-architecture" class="modal-tab-content">
+          <p id="modal-arch-text" style="color:var(--text-muted); line-height:1.7; margin-bottom:1.5rem;"></p>
+          <div style="background:var(--bg-surface-elevated); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:1.25rem; font-family:var(--font-mono); font-size:0.85rem;" id="modal-arch-diagram">
+          </div>
+        </div>
+
+        <div id="tab-code" class="modal-tab-content">
+          <div class="code-window">
+            <div class="code-window-header">
+              <span id="modal-code-filename" class="window-filename">snippet.ts</span>
+            </div>
+            <div class="code-window-body" id="modal-code-body">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       EDUCATION & WORK EXPERIENCE
+       ========================================================================== -->
+  <section id="experience" style="background: var(--bg-surface-elevated); border-top:1px solid var(--border-subtle); border-bottom:1px solid var(--border-subtle);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Background</span>
+        <h2 class="section-title">Education &amp; Experience</h2>
+        <p class="section-subtitle">
+          Academic credentials and professional experience demonstrating reliability and strong work ethic.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <!-- Education -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">Computer Programmer Diploma</h3>
+                <span class="timeline-company">Lambton College &bull; Toronto, ON</span>
+              </div>
+              <span class="timeline-period">May 2023 &mdash; Aug 2025</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Comprehensive academic coursework in Python, Java, JavaScript, TypeScript, Node.js, and SQL.</li>
+              <li>Hands-on projects focusing on object-oriented programming, data structures, relational databases, and backend APIs.</li>
+              <li>Engineered the Smart Agriculture Automation Platform as an academic milestone published to the NPM registry.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Part-time Work -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">Facility Maintenance &bull; Part-Time</h3>
+                <span class="timeline-company">Toronto, ON</span>
+              </div>
+              <span class="timeline-period">May 2024 &mdash; Present</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Demonstrated strong time management and reliability while simultaneously completing programming studies and self-directed coding.</li>
+              <li>Maintained strict attention to safety, organization, and consistent operational standards.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sitel Support -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">Bilingual Customer &amp; Technical Support Representative</h3>
+                <span class="timeline-company">Sitel S.A. &bull; Colombia (Best Buy USA &amp; FedEx Ground)</span>
+              </div>
+              <span class="timeline-period">Sep 2022 &mdash; May 2023</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Provided technical and order troubleshooting for approximately 60 customer inquiries per day.</li>
+              <li>Articulated technical and logistics information clearly to users with varying levels of technical knowledge.</li>
+              <li>Demonstrated adaptability, clear communication, and high attention to detail in a fast-paced environment.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       INTERACTIVE "DEV MODE" TERMINAL
+       ========================================================================== -->
+  <section id="terminal">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Playground</span>
+        <h2 class="section-title">Interactive Dev Console</h2>
+        <p class="section-subtitle">
+          Recruiters and hiring managers: run commands below to explore Julian's background, technical skills, or trigger quick interview actions.
+        </p>
+      </div>
+
+      <div class="terminal-container">
+        <div class="terminal-header">
+          <div class="window-dots">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <span style="color:#94a3b8; font-size:0.8rem; font-family:var(--font-mono);">julian@toronto-dev: ~/portfolio (zsh)</span>
+          <span style="font-size:0.75rem; color:#10b981;">● Available for Hire</span>
+        </div>
+
+        <div class="terminal-actions-quick">
+          <span style="color:#64748b; font-size:0.75rem; align-self:center;">Quick Run:</span>
+          <button class="term-chip" onclick="executeQuickCmd('help')">help</button>
+          <button class="term-chip" onclick="executeQuickCmd('skills')">skills</button>
+          <button class="term-chip" onclick="executeQuickCmd('projects')">projects</button>
+          <button class="term-chip" onclick="executeQuickCmd('education')">education</button>
+          <button class="term-chip" onclick="executeQuickCmd('cat bio.txt')">cat bio.txt</button>
+          <button class="term-chip" onclick="executeQuickCmd('sudo hire')">sudo hire</button>
+          <button class="term-chip" onclick="executeQuickCmd('clear')">clear</button>
+        </div>
+
+        <div class="terminal-screen" id="terminal-screen">
+          <div class="term-line">
+            <span style="color:#06b6d4;">Welcome to Julian Casilimas Beltran's interactive developer terminal!</span><br>
+            <span style="color:#64748b;">Type '<span style="color:#818cf8;">help</span>' to explore available commands, or click any quick-run chip above.</span>
+          </div>
+        </div>
+
+        <div style="padding:0.75rem 1.25rem; background:#0e1320; border-top:1px solid rgba(255,255,255,0.06);">
+          <form id="term-form" onsubmit="handleTerminalSubmit(event)">
+            <div class="term-input-row">
+              <span class="term-prompt">julian@portfolio:~$</span>
+              <input type="text" id="term-input" class="term-input" autocomplete="off" spellcheck="false" placeholder="Type a command...">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CONTACT SECTION
+       ========================================================================== -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Let's Connect</span>
+        <h2 class="section-title">Get in Touch with Julian</h2>
+        <p class="section-subtitle">
+          Actively looking for Junior Programmer, Software Developer, and Backend opportunities in Toronto, ON and Remote across Canada.
+        </p>
+      </div>
+
+      <div class="contact-layout">
+        <!-- Contact Information -->
+        <div class="contact-info-card">
+          <h3 class="contact-card-title">Direct Contact</h3>
+          <p class="contact-card-desc">
+            Feel free to call, email, or message me directly. I respond quickly and am eager to discuss software development opportunities.
+          </p>
+
+          <div class="contact-methods">
+            <div class="contact-method-item">
+              <div class="contact-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div>
+                <div style="font-size:0.8rem; color:var(--text-muted);">Email Address</div>
+                <a href="mailto:julianbeca1230@gmail.com" style="font-weight:600; color:var(--text-main);">julianbeca1230@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact-method-item">
+              <div class="contact-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div>
+                <div style="font-size:0.8rem; color:var(--text-muted);">Phone Number</div>
+                <a href="tel:4374456610" style="font-weight:600; color:var(--text-main);">437-445-6610</a>
+              </div>
+            </div>
+
+            <div class="contact-method-item">
+              <div class="contact-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div>
+                <div style="font-size:0.8rem; color:var(--text-muted);">Location</div>
+                <span style="font-weight:600;">Toronto, ON, Canada &bull; Open to On-site, Hybrid &amp; Remote</span>
+              </div>
+            </div>
+
+            <div class="contact-method-item">
+              <div class="contact-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div>
+                <div style="font-size:0.8rem; color:var(--text-muted);">Availability</div>
+                <span style="font-weight:600; color:var(--accent-emerald);">Immediate / Open for Interviews</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size:0.85rem; font-weight:600; color:var(--text-muted); margin-bottom:1rem;">FIND ME ONLINE</div>
+            <div class="social-links">
+              <a href="https://github.com" target="_blank" rel="noopener" class="social-btn" title="GitHub">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              </a>
+              <a href="mailto:julianbeca1230@gmail.com" class="social-btn" title="Direct Email">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Validated Contact Form -->
+        <div class="contact-form-card">
+          <form id="contact-form" onsubmit="handleContactSubmit(event)">
+            <div class="form-group">
+              <label for="form-name" class="form-label">Your Name *</label>
+              <input type="text" id="form-name" class="form-input" placeholder="e.g. Hiring Manager / Tech Recruiter" required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-email" class="form-label">Your Email *</label>
+              <input type="email" id="form-email" class="form-input" placeholder="e.g. recruiter@company.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-subject" class="form-label">Subject / Role Type</label>
+              <select id="form-subject" class="form-select">
+                <option value="Junior Programmer / Software Developer Role">Junior Programmer / Software Developer Role</option>
+                <option value="Backend Developer Opportunity">Backend Developer Opportunity</option>
+                <option value="Technical Interview Request">Technical Interview Request</option>
+                <option value="General Engineering Inquiry">General Engineering Inquiry</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="form-message" class="form-label">Message *</label>
+              <textarea id="form-message" class="form-textarea" placeholder="Hello Julian, we would love to speak with you regarding a software developer position..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              Send Message to Julian
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer>
+    <div class="container footer-content">
+      <div>
+        <div style="font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">Julian Casilimas Beltran &bull; Junior Programmer &amp; Backend Developer</div>
+        <p>Toronto, ON, Canada &bull; Lambton College Computer Programmer Graduate (2025)</p>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:1.5rem;">
+        <span style="font-size:0.8rem; font-family:var(--font-mono); color:var(--accent-emerald);">● Open for Opportunities</span>
+        <a href="#hero" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+          Back to Top
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Element -->
+  <div id="toast" class="toast" role="status">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+    <span id="toast-message">Message sent successfully!</span>
+  </div>
+
+  <script>
+/* ==========================================================================
+   1. THEME SWITCHER SYSTEM
+   ========================================================================== */
+const themeToggleBtn = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+const rootElement = document.documentElement;
+
+const safeStorage = {
+  get: (k) => { try { return localStorage.getItem(k); } catch(e) { return null; } },
+  set: (k, v) => { try { localStorage.setItem(k, v); } catch(e) {} }
+};
+
+function setTheme(theme) {
+  rootElement.setAttribute('data-theme', theme);
+  safeStorage.set('portfolio-theme', theme);
+  if (theme === 'light') {
+    themeIcon.innerHTML = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
+  } else {
+    themeIcon.innerHTML = `<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>`;
+  }
+}
+
+const savedTheme = safeStorage.get('portfolio-theme') || 'dark';
+setTheme(savedTheme);
+
+themeToggleBtn.addEventListener('click', () => {
+  const currentTheme = rootElement.getAttribute('data-theme');
+  setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+});
+
+/* ==========================================================================
+   2. MOBILE MENU DRAWER
+   ========================================================================== */
+const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
+const mobileDrawer = document.getElementById('mobile-drawer');
+
+mobileMenuBtn.addEventListener('click', () => {
+  mobileDrawer.classList.toggle('open');
+});
+
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileDrawer.classList.remove('open');
+  });
+});
+
+/* ==========================================================================
+   3. TYPEWRITER SUBTITLE EFFECT
+   ========================================================================== */
+const typewriterPhrases = [
+  "Junior Programmer & Software Developer",
+  "Backend Development & Node.js Specialist",
+  "Python & TypeScript Problem Solver",
+  "Computer Programmer Diploma | Lambton College"
+];
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typewriterEl = document.getElementById('typewriter-text');
+
+function typeLoop() {
+  const currentPhrase = typewriterPhrases[phraseIndex];
+  if (isDeleting) {
+    typewriterEl.textContent = currentPhrase.substring(0, charIndex - 1);
+    charIndex--;
+  } else {
+    typewriterEl.textContent = currentPhrase.substring(0, charIndex + 1);
+    charIndex++;
+  }
+
+  let typingSpeed = isDeleting ? 30 : 60;
+
+  if (!isDeleting && charIndex === currentPhrase.length) {
+    typingSpeed = 1800; // Pause at end of phrase
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    phraseIndex = (phraseIndex + 1) % typewriterPhrases.length;
+    typingSpeed = 400; // Pause before typing next
+  }
+
+  setTimeout(typeLoop, typingSpeed);
+}
+typeLoop();
+
+/* ==========================================================================
+   4. HERO INTERACTIVE CANVAS CONSTELLATION
+   ========================================================================== */
+const canvas = document.getElementById('hero-canvas');
+const ctx = canvas.getContext('2d');
+let width, height;
+let particles = [];
+const particleCount = 45;
+
+function resizeCanvas() {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = canvas.parentElement.offsetHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * width;
+    this.y = Math.random() * height;
+    this.vx = (Math.random() - 0.5) * 0.8;
+    this.vy = (Math.random() - 0.5) * 0.8;
+    this.radius = Math.random() * 2 + 1.2;
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    if (this.x < 0 || this.x > width) this.vx *= -1;
+    if (this.y < 0 || this.y > height) this.vy *= -1;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = rootElement.getAttribute('data-theme') === 'dark' ? 'rgba(99, 102, 241, 0.6)' : 'rgba(99, 102, 241, 0.35)';
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < particleCount; i++) {
+  particles.push(new Particle());
+}
+
+function animateCanvas() {
+  ctx.clearRect(0, 0, width, height);
+
+  for (let i = 0; i < particles.length; i++) {
+    particles[i].update();
+    particles[i].draw();
+
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < 130) {
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        const alpha = (1 - dist / 130) * 0.25;
+        ctx.strokeStyle = rootElement.getAttribute('data-theme') === 'dark' ? `rgba(6, 182, 212, ${alpha})` : `rgba(99, 102, 241, ${alpha})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(animateCanvas);
+}
+animateCanvas();
+
+/* ==========================================================================
+   5. SKILLS MATRIX FILTERING & SEARCH
+   ========================================================================== */
+const skillTabBtns = document.querySelectorAll('.skill-tab-btn');
+const skillCards = document.querySelectorAll('.skill-card');
+const skillSearchInput = document.getElementById('skill-search');
+
+function filterSkills() {
+  const activeTab = document.querySelector('.skill-tab-btn.active').dataset.category;
+  const query = skillSearchInput.value.toLowerCase().trim();
+
+  skillCards.forEach(card => {
+    const category = card.dataset.category;
+    const nameText = card.dataset.name;
+    const matchesCategory = activeTab === 'all' || category === activeTab;
+    const matchesQuery = query === '' || nameText.includes(query) || card.textContent.toLowerCase().includes(query);
+
+    if (matchesCategory && matchesQuery) {
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+skillTabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    skillTabBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filterSkills();
+  });
+});
+
+skillSearchInput.addEventListener('input', filterSkills);
+
+/* ==========================================================================
+   6. PROJECTS FILTERING
+   ========================================================================== */
+const projectFilterBtns = document.querySelectorAll('.project-filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+
+projectFilterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    projectFilterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+
+    projectCards.forEach(card => {
+      if (filter === 'all' || card.dataset.projectType === filter) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+/* ==========================================================================
+   7. CASE STUDY MODAL DEEP DIVES (JULIAN CASILIMAS BELTRAN)
+   ========================================================================== */
+const projectData = {
+  smartagri: {
+    category: "Academic Platform & NPM Package",
+    title: "Smart Agriculture Automation Platform",
+    metrics: [
+      { val: "NPM Package", label: "Published on Registry" },
+      { val: "TypeScript", label: "Strict Typing & Node.js" },
+      { val: "Automated", label: "Disease & Irrigation Logic" }
+    ],
+    overview: "An academic smart agriculture automation platform engineered in TypeScript and Node.js. It models environmental sensor data, automates irrigation timing, coordinates multi-point drone surveying, and features algorithmic plant disease detection.",
+    highlights: [
+      "Engineered backend business logic for automated irrigation scheduling based on soil and moisture thresholds.",
+      "Constructed drone coordination route dispatch algorithms and telemetry tracking.",
+      "Implemented automated plant disease-detection functions and structured data transformations.",
+      "Packaged the entire library as a clean, reusable NPM module (@julianlambton/smart-agriculture)."
+    ],
+    arch: "Sensor Inputs / Drones <--> TypeScript Business Logic <--> Data Validation Layer <--> Automated Irrigation Actuators <--> NPM Package API.",
+    codeFilename: "agriculture_engine.ts",
+    codeSnippet: `<pre><code><span class="syn-keyword">export interface</span> <span class="syn-type">FieldSensorReading</span> {
+  zoneId: <span class="syn-type">string</span>;
+  soilMoisturePct: <span class="syn-type">number</span>;
+  ambientTempC: <span class="syn-type">number</span>;
+  leafAnomalyDetected: <span class="syn-type">boolean</span>;
+}
+
+<span class="syn-keyword">export class</span> <span class="syn-type">IrrigationDispatcher</span> {
+  <span class="syn-keyword">public</span> <span class="syn-func">evaluateZone</span>(reading: <span class="syn-type">FieldSensorReading</span>): <span class="syn-type">ActionPlan</span> {
+    <span class="syn-keyword">if</span> (reading.soilMoisturePct &lt; 35.0) {
+      <span class="syn-keyword">return</span> { triggerIrrigation: <span class="syn-keyword">true</span>, durationSec: 600, alert: <span class="syn-string">"Optimal watering sequence"</span> };
+    }
+    <span class="syn-keyword">return</span> { triggerIrrigation: <span class="syn-keyword">false</span>, durationSec: 0, alert: <span class="syn-string">"Moisture adequate"</span> };
+  }
+}</code></pre>`
+  },
+  py100days: {
+    category: "Self-Directed Engineering & Algorithms",
+    title: "Python Backend Logic & 100 Days of Code",
+    metrics: [
+      { val: "100 Days", label: "Intensive Practice" },
+      { val: "OOP", label: "Object-Oriented Design" },
+      { val: "Python 3", label: "Data Structures & APIs" }
+    ],
+    overview: "A continuous, hands-on self-directed initiative focused on developing practical programming logic, algorithmic problem-solving, modular backend architectures, and API integrations in Python.",
+    highlights: [
+      "Built dozens of functional programs applying Object-Oriented Programming (OOP) principles.",
+      "Executed unit testing and systematic debugging to refine solution efficiency and eliminate edge-case bugs.",
+      "Processed structured data files (JSON, CSV, SQL database tables) using Python data structures.",
+      "Applied recursive problem-solving, data parsing, and clean documentation best practices."
+    ],
+    arch: "User CLI / Test Harness <--> Modular Python Controllers <--> Algorithmic Logic <--> Data Storage & Validation.",
+    codeFilename: "data_processor.py",
+    codeSnippet: `<pre><code><span class="syn-keyword">class</span> <span class="syn-type">DataProcessor</span>:
+    <span class="syn-keyword">def</span> <span class="syn-func">__init__</span>(self, records: <span class="syn-type">list</span>):
+        self.records = records
+
+    <span class="syn-keyword">def</span> <span class="syn-func">filter_valid_transactions</span>(self) -&gt; <span class="syn-type">list</span>:
+        <span class="syn-keyword">return</span> [
+            item <span class="syn-keyword">for</span> item <span class="syn-keyword">in</span> self.records 
+            <span class="syn-keyword">if</span> item.get(<span class="syn-string">"status"</span>) == <span class="syn-string">"confirmed"</span> <span class="syn-keyword">and</span> item.get(<span class="syn-string">"amount"</span>, 0) &gt; 0
+        ]</code></pre>`
+  },
+  techsupport: {
+    category: "Enterprise Systems & Technical Support",
+    title: "Bilingual Technical & Client Support (Best Buy / FedEx)",
+    metrics: [
+      { val: "60+", label: "Inquiries Solved Daily" },
+      { val: "Bilingual", label: "English & Spanish" },
+      { val: "100%", label: "Resolution & SLA Focus" }
+    ],
+    overview: "Delivered bilingual customer and technical support for international enterprise campaigns (Best Buy USA and FedEx Ground USA) at Sitel S.A., diagnosing software, logistics, and user-facing issues under strict SLA standards.",
+    highlights: [
+      "Diagnosed and resolved ~60 technical and order inquiries per day through analytical troubleshooting.",
+      "Translated complex technical requirements and error logs into clear, actionable explanations for end-users.",
+      "Adapted quickly to rapid campaign changes, internal software portals, and high-pressure team workflows.",
+      "Demonstrated exemplary attention to detail, active listening, and systematic ticket documentation."
+    ],
+    arch: "Customer Inbound Query <--> System Diagnostic & Telemetry <--> Troubleshooting Workflow <--> Issue Resolution & Documentation.",
+    codeFilename: "support_workflow.md",
+    codeSnippet: `<pre><code><span class="syn-comment"># Daily Technical Resolution Pipeline</span>
+1. Root cause identification across enterprise order portals.
+2. Structured troubleshooting across multi-tier delivery databases.
+3. Bilingual client communication (English / Spanish) with clear guidance.
+4. Comprehensive ticket logging, SLA tracking, and resolution closure.</code></pre>`
+  }
+};
+
+const modal = document.getElementById('case-study-modal');
+const modalCategory = document.getElementById('modal-category');
+const modalTitle = document.getElementById('modal-title');
+const modalMetrics = document.getElementById('modal-metrics');
+const modalOverviewText = document.getElementById('modal-overview-text');
+const modalHighlightsList = document.getElementById('modal-highlights-list');
+const modalArchText = document.getElementById('modal-arch-text');
+const modalArchDiagram = document.getElementById('modal-arch-diagram');
+const modalCodeFilename = document.getElementById('modal-code-filename');
+const modalCodeBody = document.getElementById('modal-code-body');
+
+function openCaseStudy(projectId) {
+  const data = projectData[projectId];
+  if (!data) return;
+
+  modalCategory.textContent = data.category;
+  modalTitle.textContent = data.title;
+  modalOverviewText.textContent = data.overview;
+  modalArchText.textContent = "Architectural flow and core subsystem decomposition:";
+  modalArchDiagram.innerHTML = `<span style="color:#06b6d4;">[DATA FLOW ARCHITECTURE]</span><br><br>${data.arch}`;
+  modalCodeFilename.textContent = data.codeFilename;
+  modalCodeBody.innerHTML = data.codeSnippet;
+
+  modalMetrics.innerHTML = data.metrics.map(m => `
+    <div class="modal-metric-card">
+      <div class="modal-metric-value">${m.val}</div>
+      <div class="modal-metric-label">${m.label}</div>
+    </div>
+  `).join('');
+
+  modalHighlightsList.innerHTML = data.highlights.map(h => `<li>${h}</li>`).join('');
+
+  switchModalTab('overview');
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  modal.classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+function closeModalOnBackdrop(e) {
+  if (e.target === modal) {
+    closeModal();
+  }
+}
+
+function switchModalTab(tabId) {
+  document.querySelectorAll('.modal-tab-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.modal-tab-content').forEach(content => content.classList.remove('active'));
+
+  const targetTab = document.getElementById(`tab-${tabId}`);
+  if (targetTab) targetTab.classList.add('active');
+
+  const activeBtn = Array.from(document.querySelectorAll('.modal-tab-btn')).find(b => b.textContent.toLowerCase().includes(tabId));
+  if (activeBtn) activeBtn.classList.add('active');
+}
+
+/* ==========================================================================
+   8. INTERACTIVE DEV MODE TERMINAL ENGINE (JULIAN CASILIMAS BELTRAN)
+   ========================================================================== */
+const terminalScreen = document.getElementById('terminal-screen');
+const termInput = document.getElementById('term-input');
+
+const termCommands = {
+  help: () => `
+<span style="color:#06b6d4; font-weight:700;">AVAILABLE COMMANDS:</span>
+  <span style="color:#818cf8;">about</span>        - Summary of background, education & goals
+  <span style="color:#818cf8;">skills</span>       - List core technical stack & competencies
+  <span style="color:#818cf8;">projects</span>     - Display featured software projects & NPM packages
+  <span style="color:#818cf8;">education</span>    - View diploma & college details
+  <span style="color:#818cf8;">experience</span>   - View work & technical support history
+  <span style="color:#818cf8;">contact</span>      - Show phone, email, and location
+  <span style="color:#818cf8;">cat bio.txt</span>  - Read personal engineering statement
+  <span style="color:#818cf8;">whoami</span>       - Inspect visitor session
+  <span style="color:#818cf8;">sudo hire</span>    - Connect with Julian for interview scheduling
+  <span style="color:#818cf8;">theme</span> [dark|light] - Switch site theme dynamically
+  <span style="color:#818cf8;">clear</span>        - Clear terminal history
+`,
+  about: () => `
+Julian Casilimas Beltran &bull; Junior Programmer & Software Developer based in Toronto, ON.
+Graduate of Lambton College's Computer Programmer Diploma (2023 - 2025).
+Strong foundation in backend programming, Python, TypeScript, Node.js, Java, and SQL databases.
+`,
+  skills: () => `
+<span style="color:#10b981;">Languages:</span>   Python, Java, JavaScript, TypeScript, HTML5, CSS3
+<span style="color:#06b6d4;">Backend:</span>     Node.js, Backend Logic, REST / Basic APIs, OOP
+<span style="color:#f59e0b;">Databases:</span>   SQL, Relational Concepts, Data Processing
+<span style="color:#818cf8;">Practices:</span>   Git, GitHub, NPM, Debugging, Testing, Documentation
+`,
+  projects: () => `
+1. <span style="color:#6366f1; font-weight:700;">Smart Agriculture Platform</span> - Academic project published on NPM (@julianlambton/smart-agriculture) [TypeScript, Node.js]
+2. <span style="color:#6366f1; font-weight:700;">100 Days of Code</span>         - Daily Python programming modules, algorithms & data processing
+3. <span style="color:#6366f1; font-weight:700;">Technical Support Systems</span> - Resolved ~60 inquiries/day for Best Buy & FedEx campaigns
+`,
+  education: () => `
+Lambton College &bull; Toronto, ON, Canada
+Computer Programmer Diploma (May 2023 &ndash; August 2025)
+Core Focus: Software Development, Object-Oriented Programming, Database Systems & Web Technologies.
+`,
+  experience: () => `
+&bull; May 2024 - Present: Facility Maintenance (Part-Time) | Toronto, ON
+&bull; May 2026 - Present: 100 Days of Code (Self-Directed Python & Backend Logic)
+&bull; Sep 2022 - May 2023: Bilingual Customer & Technical Support @ Sitel S.A. (Best Buy / FedEx)
+`,
+  contact: () => `
+Name:      Julian Casilimas Beltran
+Location:  Toronto, ON, Canada
+Phone:     437-445-6610
+Email:     julianbeca1230@gmail.com
+GitHub:    Available upon request / in navigation
+Status:    Actively interviewing for Junior Developer & Backend roles!
+`,
+  "cat bio.txt": () => `
+"Analytical problem solver committed to continuous learning and building practical software development skills. I love breaking down complex business logic into clean, testable code, whether building TypeScript backend modules or exploring algorithms in Python."
+`,
+  whoami: () => `
+visitor@toronto-recruiter-console (Status: Reviewing Julian's Portfolio)
+`,
+  "sudo hire": () => `
+<span style="color:#10b981; font-weight:700;">[EXCELLENT CHOICE!]</span> Preparing direct contact with Julian:
+1. Phone: 437-445-6610
+2. Email: julianbeca1230@gmail.com
+3. Status: Ready to add value to your engineering team immediately!
+`
+};
+
+function handleTerminalSubmit(e) {
+  e.preventDefault();
+  const rawCmd = termInput.value.trim();
+  if (!rawCmd) return;
+
+  termInput.value = '';
+  executeCommand(rawCmd);
+}
+
+function executeQuickCmd(cmd) {
+  executeCommand(cmd);
+  termInput.focus();
+}
+
+function executeCommand(cmd) {
+  const lower = cmd.toLowerCase().trim();
+
+  const promptLine = document.createElement('div');
+  promptLine.className = 'term-line';
+  promptLine.innerHTML = `<span class="term-prompt">julian@portfolio:~$</span> <span class="term-cmd">${escapeHtml(cmd)}</span>`;
+  terminalScreen.appendChild(promptLine);
+
+  if (lower === 'clear') {
+    terminalScreen.innerHTML = '';
+    return;
+  }
+
+  const outLine = document.createElement('div');
+  outLine.className = 'term-line term-out';
+
+  if (lower.startsWith('theme')) {
+    const parts = lower.split(' ');
+    if (parts[1] === 'light' || parts[1] === 'dark') {
+      setTheme(parts[1]);
+      outLine.innerHTML = `<span style="color:#10b981;">Theme switched to ${parts[1]} mode.</span>`;
+    } else {
+      outLine.innerHTML = `Usage: theme [dark|light]`;
+    }
+  } else if (termCommands[lower]) {
+    outLine.innerHTML = termCommands[lower]();
+  } else {
+    outLine.innerHTML = `<span style="color:#ef4444;">command not found: ${escapeHtml(cmd)}</span>. Type '<span style="color:#06b6d4;">help</span>' to see available commands.`;
+  }
+
+  terminalScreen.appendChild(outLine);
+  terminalScreen.scrollTop = terminalScreen.scrollHeight;
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+/* ==========================================================================
+   9. CONTACT FORM VALIDATION & TOAST ALERT
+   ========================================================================== */
+const toast = document.getElementById('toast');
+const toastMessage = document.getElementById('toast-message');
+
+function showToast(msg) {
+  toastMessage.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 4000);
+}
+
+function handleContactSubmit(e) {
+  e.preventDefault();
+  const name = document.getElementById('form-name').value.trim();
+  const email = document.getElementById('form-email').value.trim();
+  const subject = document.getElementById('form-subject').value;
+  const message = document.getElementById('form-message').value.trim();
+
+  if (!name || !email || !message) {
+    showToast("Please complete all required fields.");
+    return;
+  }
+
+  showToast(`Thank you ${name}! Connecting you with Julian Casilimas Beltran...`);
+  
+  const mailtoUrl = `mailto:julianbeca1230@gmail.com?subject=${encodeURIComponent(subject + " from " + name)}&body=${encodeURIComponent(message + "\n\nFrom: " + name + " (" + email + ")")}`;
+  setTimeout(() => {
+    window.location.href = mailtoUrl;
+  }, 1000);
+
+  document.getElementById('contact-form').reset();
+}
+
+function triggerResumeDownload() {
+  showToast("Julian_Casilimas_Beltran_Resume.pdf prepared for download!");
+}
+
+</script>
+</body>
+</html>
